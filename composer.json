@@ -12,12 +12,11 @@
     ],
     "require": {
         "yiisoft/yii2": ">=2.0.4",
-        "wildbit/postmark-php": "*",
+        "wildbit/postmark-php": "6.0.8",
         "php" : ">=5.6.0"
     },
     "require-dev" : {
-        "php" : ">=5.6.0",
-        "codeception/codeception": "*"
+      "codeception/codeception": "*"
     },
     "autoload": {
         "psr-4": { "sweelix\\postmark\\": "src" }

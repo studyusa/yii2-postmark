@@ -19,6 +19,7 @@ use Postmark\Models\PostmarkException;
 use Postmark\PostmarkClient;
 use yii\base\InvalidConfigException;
 use yii\mail\BaseMailer;
+use sweelix\postmark\Message;
 
 /**
  * This component allow user to send an email
@@ -56,7 +57,7 @@ class Mailer extends BaseMailer
     /**
      * @inheritdoc
      */
-    public $messageClass = 'sweelix\postmark\Message';
+    public $messageClass = Message::class;
     /**
      * @param Message $message
      * @since XXX
@@ -106,7 +107,7 @@ class Mailer extends BaseMailer
                 );
             }
             //TODO: handle error codes and log stuff
-            return isset($sendResult['ErrorCode']) ? ($sendResult['ErrorCode'] == 0) : false;
+            return $sendResult->getErrorCode() === 0;
         } catch (PostmarkException $e) {
             throw $e;
         }
